@@ -30,8 +30,3 @@ Acesse http://127.0.0.1:5000.
 
 A conversão é implementada manualmente. O programa interpreta cada dígito e acumula o valor decimal com `resultado = resultado * base + digito`. Em seguida, gera a representação de destino por divisões sucessivas e coleta dos restos. Não utiliza `int(texto, base)`, `bin()`, `oct()`, `hex()` nem bibliotecas de conversão de bases.
 
-## Antes de entregar
-- Substituir os nomes e contribuições de exemplo em `app.py`.
-- Adicionar os integrantes reais ao README.
-- Testar entradas válidas e inválidas.
-- Fazer commits individuais que representem o trabalho real do grupo.
