@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Conversor{% endblock %}
+{% block content %}
+<section class="page-intro compact">
+  <span class="eyebrow">FERRAMENTA DE CONVERSÃO</span>
+  <h1>Conversor de bases</h1>
+  <p>Informe um número inteiro e selecione as bases de origem e destino.</p>
+</section>
+<section class="converter-panel">
+  <form method="post" action="{{ url_for('conversor') }}" id="converter-form">
+    <div class="field">
+      <label for="valor">Número para converter</label>
+      <input id="valor" name="valor" type="text" value="{{ valor }}" placeholder="Ex.: 10110101 ou B5" autocomplete="off" required>
+      <small>Hexadecimal aceita letras de A até F. Números negativos também são aceitos.</small>
+    </div>
+    <div class="conversion-arrow" aria-hidden="true">↓</div>
+    <div class="select-grid">
+      <div class="field">
+        <label for="origem">Base de origem</label>
+        <select id="origem" name="origem">
+          {% for chave, base in bases.items() %}
+          <option value="{{ chave }}" {{ 'selected' if origem == chave else '' }}>{{ base.label }} (base {{ base.base }})</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label for="destino">Base de destino</label>
+        <select id="destino" name="destino">
+          {% for chave, base in bases.items() %}
+          <option value="{{ chave }}" {{ 'selected' if destino == chave else '' }}>{{ base.label }} (base {{ base.base }})</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button class="button primary submit-button" type="submit">Converter número <span aria-hidden="true">→</span></button>
+  </form>
+  <div class="supported-bases">
+    <span>BASES SUPORTADAS</span>
+    <div><b>BIN</b> Binário <b>DEC</b> Decimal <b>OCT</b> Octal <b>HEX</b> Hexadecimal</div>
+  </div>
+</section>
+
+{% if resultado is not none or erro %}
+<div class="modal-backdrop" id="result-modal" role="presentation">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button type="button" class="modal-close" id="close-modal" aria-label="Fechar resultado">×</button>
+    {% if erro %}
+      <div class="modal-icon error-icon">!</div>
+      <span class="eyebrow">VERIFIQUE A ENTRADA</span>
+      <h2 id="modal-title">Não foi possível converter</h2>
+      <p class="error-text">{{ erro }}</p>
+    {% else %}
+      <div class="modal-icon">✓</div>
+      <span class="eyebrow">CONVERSÃO CONCLUÍDA</span>
+      <h2 id="modal-title">Resultado</h2>
+      <p class="result-description">{{ origem_label }} → {{ destino_label }}</p>
+      <div class="result-value" id="result-value">{{ resultado }}</div>
+      <button class="button primary copy-button" id="copy-result" type="button">Copiar resultado</button>
+    {% endif %}
+    <button class="button secondary modal-done" id="done-modal" type="button">Voltar ao conversor</button>
+  </section>
+</div>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

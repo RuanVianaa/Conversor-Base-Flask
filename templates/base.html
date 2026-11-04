@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}BaseLab{% endblock %} | Conversor de bases</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('inicio') }}"><span class="brand-mark">0x</span> BaseLab</a>
+    <nav aria-label="Navegação principal">
+      <a class="{{ 'active' if pagina == 'inicio' else '' }}" href="{{ url_for('inicio') }}">Início</a>
+      <a class="{{ 'active' if pagina == 'conversor' else '' }}" href="{{ url_for('conversor') }}">Conversor</a>
+      <a class="{{ 'active' if pagina == 'equipe' else '' }}" href="{{ url_for('equipe') }}">Equipe</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>Projeto acadêmico · Redes de Computadores I</footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

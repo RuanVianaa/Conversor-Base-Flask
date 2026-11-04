@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Início{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">REDES DE COMPUTADORES I</span>
+    <h1>Os números por trás<br>do mundo digital.</h1>
+    <p>Explore as bases numéricas usadas para representar dados, endereços e valores dentro dos sistemas computacionais.</p>
+    <a class="button primary" href="{{ url_for('conversor') }}">Abrir conversor <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="hero-visual" aria-label="Exemplos de números em diferentes bases">
+    <div class="floating-code"><span>BINÁRIO</span><strong>10110101</strong></div>
+    <div class="floating-code featured"><span>HEXADECIMAL</span><strong>#2F6BFF</strong></div>
+    <div class="floating-code"><span>DECIMAL</span><strong>181</strong></div>
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-heading">
+    <span class="eyebrow">CONCEITOS ESSENCIAIS</span>
+    <h2>Quatro formas de representar valores</h2>
+    <p>O valor pode ser o mesmo. O que muda é a forma de escrevê-lo.</p>
+  </div>
+  <div class="base-grid">
+    <article class="base-card"><span class="base-symbol">01</span><h3>Binário</h3><p>Usa somente os dígitos 0 e 1. É a base fundamental da representação digital, pois circuitos trabalham com dois estados.</p><code>10110101</code></article>
+    <article class="base-card"><span class="base-symbol">10</span><h3>Decimal</h3><p>É o sistema cotidiano, de base 10, formado pelos algarismos de 0 a 9.</p><code>181</code></article>
+    <article class="base-card"><span class="base-symbol">8</span><h3>Octal</h3><p>Usa os dígitos de 0 a 7. Cada dígito octal corresponde a três bits, facilitando algumas leituras de binário.</p><code>265</code></article>
+    <article class="base-card"><span class="base-symbol">0x</span><h3>Hexadecimal</h3><p>Usa 0 a 9 e A a F. Cada dígito hexadecimal representa quatro bits e aparece em endereços, cores e depuração.</p><code>B5</code></article>
+  </div>
+</section>
+<section class="callout">
+  <div><span class="eyebrow">NA PRÁTICA</span><h2>Converta sem mistério.</h2><p>Escolha a base de origem, a base de destino e informe o número. O resultado aparece em uma janela modal.</p></div>
+  <a class="button light" href="{{ url_for('conversor') }}">Experimentar agora ↗</a>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Equipe{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <span class="eyebrow">QUEM FEZ ACONTECER</span>
+  <h1>Equipe do projeto</h1>
+  <p>Integrantes e responsabilidades no desenvolvimento do BaseLab.</p>
+</section>
+<section class="team-grid">
+  {% for integrante in integrantes %}
+  <article class="team-card">
+    <div class="avatar">{{ loop.index }}</div>
+    <span class="eyebrow">INTEGRANTE {{ "%02d"|format(loop.index) }}</span>
+    <h2>{{ integrante.nome }}</h2>
+    <p>{{ integrante.contribuicao }}</p>
+  </article>
+  {% endfor %}
+</section>
+<div class="notice"><strong>Antes da entrega:</strong> substituam os nomes e as contribuições de exemplo pelos dados reais do grupo. A divisão precisa refletir o que cada pessoa efetivamente desenvolveu.</div>
+{% endblock %}
