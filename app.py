@@ -96,11 +96,19 @@ def inicio():
 
 @app.route("/equipe")
 def equipe():
-    # Substituam os exemplos pelos integrantes reais e suas contribuições.
     integrantes = [
-        {"nome": "Nome do integrante 1", "contribuicao": "Implementação do algoritmo de conversão."},
-        {"nome": "Nome do integrante 2", "contribuicao": "Desenvolvimento das páginas e do layout."},
-        {"nome": "Nome do integrante 3", "contribuicao": "Testes, validação e documentação."},
+        {
+            "nome": "Lethycia",
+            "contribuicao": "Desenvolvimento do código da aplicação em Python/Flask e, junto com a equipe, da lógica de conversão.",
+        },
+        {
+            "nome": "Ruan",
+            "contribuicao": "Criação do CSS e do layout das páginas e, junto com a equipe, da lógica de conversão.",
+        },
+        {
+            "nome": "Bianca",
+            "contribuicao": "Testes e validação das conversões e, junto com a equipe, da lógica de conversão.",
+        },
     ]
     return render_template("equipe.html", pagina="equipe", integrantes=integrantes)
 
